@@ -4,7 +4,6 @@
     ./display-manager.nix
     ./flatpak.nix
     ./fonts.nix
-    ./greetd.nix
     ./hardware.nix
     ./network.nix
     ./nfs.nix
