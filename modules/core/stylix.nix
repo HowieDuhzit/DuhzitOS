@@ -11,7 +11,7 @@ in {
     image = stylixImage;
     
     # Disable stylix Plymouth theme to use our custom one
-    plymouth.enable = false;
+    targets.plymouth.enable = false;
     
     # DuhzitOS Theme Colors
     base16Scheme = {
