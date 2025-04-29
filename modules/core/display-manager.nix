@@ -39,10 +39,10 @@
       export GDK_PIXBUF_MODULE_FILE=$(echo ${pkgs.gdk-pixbuf.out}/lib/gdk-pixbuf-2.0/*/loaders.cache)
       
       cp -r $src $out
-      cp ${./../../Logo.png} $out/assets/logo.png
+      cp ${./../../img/Logo.png} $out/assets/logo.png
       
       # Create a blurred version of the logo for the background
-      convert ${./../../Logo.png} \
+      convert ${./../../img/Logo.png} \
         -blur 0x8 \
         -modulate 50 \
         $out/assets/background.png

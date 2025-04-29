@@ -74,8 +74,8 @@
     installPhase = ''
       mkdir -p $out/share/plymouth/themes/duhzitos
       cp -r $src/share/plymouth/themes/duhzitos/* $out/share/plymouth/themes/duhzitos/
-      cp ${./../../Logo.png} $out/share/plymouth/themes/duhzitos/logo.png
-      cp ${./../../Logo.png} $out/share/plymouth/themes/duhzitos/watermark.png
+      cp ${./../../img/Logo.png} $out/share/plymouth/themes/duhzitos/logo.png
+      cp ${./../../img/Logo.png} $out/share/plymouth/themes/duhzitos/watermark.png
     '';
   });
 in {
