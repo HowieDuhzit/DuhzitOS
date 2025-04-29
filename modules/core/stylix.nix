@@ -10,6 +10,9 @@ in {
     enable = true;
     image = stylixImage;
     
+    # Disable stylix Plymouth theme to use our custom one
+    plymouth.enable = false;
+    
     # DuhzitOS Theme Colors
     base16Scheme = {
       # Base colors from the DuhzitOS color scheme
