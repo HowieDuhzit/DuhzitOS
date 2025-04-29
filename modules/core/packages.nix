@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   programs = {
@@ -20,6 +21,15 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Display Manager Dependencies
+    greetd.tuigreet
+    (lib.mkIf (config.duhzitos.displayManager.type == "sddm") [
+      sddm
+      sddm-sugar-dark
+      libsForQt5.qt5.qtquickcontrols2
+      libsForQt5.qt5.qtgraphicaleffects
+    ])
+
     amfora # Fancy Terminal Browser For Gemini Protocol
     appimage-run # Needed For AppImage Support
     brave # Brave Browser
@@ -35,7 +45,6 @@
     gedit # Simple Graphical Text Editor
     gimp # Great Photo Editor
     glxinfo  #needed for inxi diag util 
-    greetd.tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     htop # Simple Terminal Based System Monitor
     hyprpicker # Color Picker
     eog # For Image Viewing

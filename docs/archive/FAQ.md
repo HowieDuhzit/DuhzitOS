@@ -1,7 +1,7 @@
-# 💬 ZaneyOS FAQ for v2.3 
+# �� DuhzitOS FAQ for v0.0.1 
 - **Revision v1.14**  
 - **Date:** 30-Mar-2025
-<h4>---> ZaneyOS related</h4>
+<h4>---> DuhzitOS related</h4>
 
 <strong>⌨ Where can I see the Hyprland keybindings?</strong>
 - The SUPER key + K opens a searchable menu with the bindings
@@ -9,7 +9,7 @@
  
 <details>
 
-<summary><strong>❄ Why did you create ZaneyOS ? </strong></summary>
+<summary><strong>❄ Why did you create DuhzitOS ? </strong></summary>
  
 <div style="margin-left: 20px;">
 
@@ -17,14 +17,14 @@
  - It was there to promote NixOS and Hyprland. 
  - Providing a stable, working configuration. 
  - It has never been intended as a full NixOS distro. 
- - The `ZaneyOS` name is an inside joke among friends. 
+ - The `DuhzitOS` name is an inside joke among friends. 
  - The intent is this configration can be used as a daily driver
  - Develop software, play games via steam, etc.
  - My hope is that it helpful, and will modify it to fit your needs. 
  - That is the key take away.  Make it your own.
- - You create a fork of ZaneyOS, then modify it.
+ - You create a fork of DuhzitOS, then modify it.
  - If you find an issue and fix it, or provide a new feature, please share it. 
- - ZaneyOS is not a distro. At this time there are no plans to create an install ISO.
+ - DuhzitOS is not a distro. At this time there are no plans to create an install ISO.
 
 </div>
 </details>
@@ -37,7 +37,7 @@
 <details>
 <summary><strong> How do I change the Timezone? </strong></summary>
 
-1. In the file, `~/zaneyos/modules/core/system.nix`  
+1. In the file, `~/duhzitos/modules/core/system.nix`  
 2. Edit the line:  time.timeZone = "America/New_York"; 
 3. Save the file and rebuild using the `fr` alias.
 
@@ -46,7 +46,7 @@
 <details>
 <summary><strong>How do I change the monitor settings? </strong></summary>
 
- Monitor settings are in the file:  `~/zaneyos/hosts/<HOSTNAME>/variables.nix`
+ Monitor settings are in the file:  `~/duhzitos/hosts/<HOSTNAME>/variables.nix`
 
  Inside the quotes the syntax is "monitor=video apapter,resolution@refresh rate, auto,scale" 
  Monitor must be in all lowercase.  If you are not sure of your video devices run 
@@ -110,17 +110,17 @@ More information on configuring monitors is available on the [Hyprland Wiki](htt
 
 
 <details>
-<summary><strong>How do I add applications to ZaneyOS? </strong></summary>
+<summary><strong>How do I add applications to DuhzitOS? </strong></summary>
 
 ###  There are two options. One for all hosts you have, another for a specific host.
 
 1.  For applications to be included in all defined hosts edit the 
-	`~/zaneyos/modules/core/packages.nix` file.  
+	`~/duhzitos/modules/core/packages.nix` file.  
         
 There is a section that begins with: 
 	` environment.systemPackages = with pkgs; `
 
-Followed by a list of packages These are required for ZaneyOS. 
+Followed by a list of packages These are required for DuhzitOS. 
 
 We suggest you add a comment at the end of the package names. Then add in your packages. 
 
@@ -153,7 +153,7 @@ We suggest you add a comment at the end of the package names. Then add in your p
 
 2.  For applications that will only be on specific host. 
    
-You edit the `host-packages.nix` associated with that host. `~/zaneyos/hosts/<HOSTNAME>/host-packages.nix` 
+You edit the `host-packages.nix` associated with that host. `~/duhzitos/hosts/<HOSTNAME>/host-packages.nix` 
 
 The part of the file you need to edit, looks like this: 
 
@@ -188,16 +188,16 @@ If the rebuild completes successfully, a new generation with your added packages
 </details>
 
 <details>
-<summary><strong> I made a change to my ZaneyOS configuration, how do I activate it? </strong></summary>
+<summary><strong> I made a change to my DuhzitOS configuration, how do I activate it? </strong></summary>
 
-- Use the `fr` Flake Rebuild alias. If you **created a new file** please note you will need to run a `git add .` command in the zaneyos folder. If successful, a new generation will be generated with your changes. A logout or reboot could be required depending on what you changed. 
+- Use the `fr` Flake Rebuild alias. If you **created a new file** please note you will need to run a `git add .` command in the duhzitos folder. If successful, a new generation will be generated with your changes. A logout or reboot could be required depending on what you changed. 
 
 </details>
 
 <details>
 <summary><strong> How can I configure a different kernel on a specific host? </strong></summary>
 
-1. You have to edit the `hardware.nix` file for that host in `~/zaneyos/hosts/HOSTNAME/hardware.nix` and override the default.
+1. You have to edit the `hardware.nix` file for that host in `~/duhzitos/hosts/HOSTNAME/hardware.nix` and override the default.
 2. Near the top you will find this section of the `hardware.nix` file.  
 ```nix
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_usb_sdmmc"];
@@ -269,13 +269,13 @@ To change the hostname, there are several steps and you will have to reboot to m
 
 1. Copy the directory of the host you want to rename to a directory with the new name. 
 
-- `cp -rpv ~/zaneyos/hosts/OLD-HOSTNAME ~/zaneyos/hosts/NEW-HOSTNAME `
+- `cp -rpv ~/duhzitos/hosts/OLD-HOSTNAME ~/duhzitos/hosts/NEW-HOSTNAME `
 
-2. Edit the `~/zaneyos/flake.nix` file. Change the line:
+2. Edit the `~/duhzitos/flake.nix` file. Change the line:
 
 - `host = "NEW-HOSTNAME"`  
     
-3.  In the `~/zaneyos` Directory run `git add .` *The rebuild will fail with a 'file not found' error if you forget this step.*
+3.  In the `~/duhzitos` Directory run `git add .` *The rebuild will fail with a 'file not found' error if you forget this step.*
 
 4.  Use the `fr` alias to create a new generation with the new hostname.  You must reboot to make the change effective. 
 
@@ -283,7 +283,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 <details>
 <summary><strong> How do I disable the spinning snowflake at startup? </strong></summary>
 
-1.  Edit the `~/zaneyos/modules/core/boot.nix` file.
+1.  Edit the `~/duhzitos/modules/core/boot.nix` file.
 2.  Look for: 
    ```nix
    };
@@ -298,13 +298,13 @@ To change the hostname, there are several steps and you will have to reboot to m
 <details>
  <summary><strong> How do I configure my hybrid laptop with Intel/NVIDIA GPUs?  </strong></summary>
 
-1. Either run the `install-zaneyos.sh` script and select `nvidia-laptop` template or if configuring manually, set the template in the `flake.nix` to `nvidia-prime`  
+1. Either run the `install-duhzitos.sh` script and select `nvidia-laptop` template or if configuring manually, set the template in the `flake.nix` to `nvidia-prime`  
 
-2. In the `~/zaneyos/hosts/HYBRID-HOST/variables.nix` file you will need to set the PCI IDs for the Intel and NVIDIA GPUs. Refer to [this page](https://nixos.wiki/wiki/Nvidia) to help determine those values.
+2. In the `~/duhzitos/hosts/HYBRID-HOST/variables.nix` file you will need to set the PCI IDs for the Intel and NVIDIA GPUs. Refer to [this page](https://nixos.wiki/wiki/Nvidia) to help determine those values.
 
 3. Once you have everything configured properly, use the `fr` Flake Rebuild alias to create a new generation. 
 
-4. In the `~/zaneyos/modules/home/hyprland/config.nix` file is an ENV setting` "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"` This sets the primary and secondary GPUs. Using the info from the weblink above you might have to change the order of these values.
+4. In the `~/duhzitos/modules/home/hyprland/config.nix` file is an ENV setting` "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"` This sets the primary and secondary GPUs. Using the info from the weblink above you might have to change the order of these values.
 
 </details>
 
@@ -321,7 +321,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 <summary>How do I enable or disable Stylix? </summary>
 
 - To Enable:  
-1. Edit the `~/zaneyos/modules/core/stylix.nix` file.  
+1. Edit the `~/duhzitos/modules/core/stylix.nix` file.  
 2. Comment out from `base16Scheme` to the `};` after `base0F` 
 
 ```nix
@@ -361,7 +361,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 4. Run `fr` command alias to create a new generation with this colorscheme.
 
 - To disable uncomment 
-1. Edit the `~/zaneyos/modules/core/stylix.nix` file.  
+1. Edit the `~/duhzitos/modules/core/stylix.nix` file.  
 2. Uncomment out from `base16Scheme` to the `};` after `base0F` 
 
 ```nix
@@ -392,8 +392,8 @@ To change the hostname, there are several steps and you will have to reboot to m
 <details>
  <summary>How do I change the image Stylix uses to theme with?</summary>
 
-1. Edit the `~/zaneyos/hosts/HOSTNAME/varibles.nix` 
-2. Change the `stylixImage = ` to the filename you want to use. Wallpapers are in `~/zaneyos/wallpapers`
+1. Edit the `~/duhzitos/hosts/HOSTNAME/varibles.nix` 
+2. Change the `stylixImage = ` to the filename you want to use. Wallpapers are in `~/duhzitos/wallpapers`
 
 ```nix
   # Set Stylix Image
@@ -413,7 +413,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 <details>
 <summary><strong>  How do I add more wallpapers? </strong></summary>
 
-- Wallpapers are stored in the `~/zaneyos/wallpapers` directory.  
+- Wallpapers are stored in the `~/duhzitos/wallpapers` directory.  
 - Simply copy the new ones to that diretory. 
 
 </details>
@@ -430,7 +430,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 
 <summary><strong>  How can I set a timer to change the wallpaper automatically?  </strong></summary>
 
-1. Edit the `~/zaneyos/modules/home/hyprland/config.nix` file. 
+1. Edit the `~/duhzitos/modules/home/hyprland/config.nix` file. 
 2. Comment out the line `sleep 1.5 && swww img ...`
 3. Add new line after that with `sleep 1 && wallsetter` 
 
@@ -458,7 +458,7 @@ To change the hostname, there are several steps and you will have to reboot to m
 
 <summary><strong>How do I change the interval the wallpaper changes?  </strong></summary>
 
-1.  Edit the `~/zaneyos/modules/home/scripts/wallsetter`  
+1.  Edit the `~/duhzitos/modules/home/scripts/wallsetter`  
 2.  Change the `TIMEOUT = ` value. Which is in seconds. 
 3.  Run the command alias `fr` to create a new generation.  
 4.  You will need to logout or reboot to make the change effective. 
@@ -471,81 +471,81 @@ To change the hostname, there are several steps and you will have to reboot to m
 
 
 <details>
-<summary><strong>⬆ How do I update ZaneyOS?  </strong></summary>
+<summary><strong>⬆ How do I update DuhzitOS?  </strong></summary>
 
 <div style="margin-left: 20px;">
 
 <details>
-<summary> For versions v2.3+ </summary>
+<summary> For versions v0.0.1+ </summary>
 
-1. First backup your existing  `zaneyos` directory.
+1. First backup your existing  `duhzitos` directory.
 
-- `cp -rpv ~/zaneyos ~/Backup-ZaneyOS`
+- `cp -rpv ~/duhzitos ~/Backup-DuhzitOS`
 
-*Any changes you made to the ZaneyOS config will need to be re-done*
+*Any changes you made to the DuhzitOS config will need to be re-done*
 
-2. In the `zaneyos` directory run `git stash && git pull` 
+2. In the `duhzitos` directory run `git stash && git pull` 
 
 3. Copy back your previously created host(s). 
 
-- `cp -rpv ~/Backup-ZaneyOS/hosts/HOSTNAME  ~/zaneyos/hosts `
+- `cp -rpv ~/Backup-DuhzitOS/hosts/HOSTNAME  ~/duhzitos/hosts `
 
 4. If you did not use the `default` host during your initial install
 
 - Then  do not copy the `default` host from your backup. The new default host might have updates or fixes you will need for the next host you create.**
-- Then you will have to manually compare your backup to the new updated `default` host template, and potentially merge the changes and overwrite your `hardware.nix` file to the `~/zaneyos/hosts/default/hardware.nix` file.**
+- Then you will have to manually compare your backup to the new updated `default` host template, and potentially merge the changes and overwrite your `hardware.nix` file to the `~/duhzitos/hosts/default/hardware.nix` file.**
 
-5. In the `zaneyos` directory run `git add .` when you have finished copying your host(s).  
+5. In the `duhzitos` directory run `git add .` when you have finished copying your host(s).  
 
 6. For any other changes you've made. For example: hyprland keybinds, waybar config, if you added additional packages to the `modules/packages.nix` file.  Those you will have to manually merge back into the new version. 
 </details>
 
 <details>
- <summary> For versions v2.0->2.2 </summary>
+ <summary> For versions v0.0.1 </summary>
 
-1. First backup your existing  `zaneyos` directory.  e.g. `cp -r ~/zaneyos ~/zaneyos-backup`
+1. First backup your existing  `duhzitos` directory.  e.g. `cp -r ~/duhzitos ~/duhzitos-backup`
  
 2. There is no direct update. When you clone the the new config the config files and layout have changed.
 
-3. You need to install zaneyos like a new install.  `./install-zaneyos.sh`
+3. You need to install duhzitos like a new install.  `./install-duhzitos.sh`
 
-4. Once the build completes and you have rebooted you can review the new layout and decide what if any changes you made on the earlier version can be migrated to v2.3.
+4. Once the build completes and you have rebooted you can review the new layout and decide what if any changes you made on the earlier version can be migrated to v0.0.1.
 
 </details>
 
 <details>
  <summary> For version v1.x </summary>
 
-1. The layout and configuration are completely different. Virtually noting from 1.x is applicable to v2.3.
+1. The layout and configuration are completely different. Virtually noting from 1.x is applicable to v0.0.1.
 
-2. Backup your `zaneyos` directory e.g. `cp -r ~/zaneyos ~/zaneyos-backup`
+2. Backup your `duhzitos` directory e.g. `cp -r ~/duhzitos ~/duhzitos-backup`
 
-3. Run the `./install-zaneyos.sh` script and follow the new install instructions. 
+3. Run the `./install-duhzitos.sh` script and follow the new install instructions. 
 
 </details>
 
 
 <details>
-<summary> How do I know when a new version of ZaneyOS is released? </summary>
+<summary> How do I know when a new version of DuhzitOS is released? </summary>
 
-It will be announced on the Zaney [Discord](https://discord.gg/W7efsSDS) server.
-
-</details>
-
-</div>
+It will be announced on the Duhzit [Discord](https://discord.gg/W7efsSDS) server.
 
 </details>
 
 </div>
 
-<details><summary><strong>📂 ZaneyOS v2.3 Layout</strong></summary>
+</details>
+
+</div>
+
+<details><summary><strong>📂 DuhzitOS v0.0.1 Layout</strong></summary>
 
 <div style="margin-left: 25px;">
 
-<h4> 📂 ~/zaneyos </h4>
+<h4> �� ~/duhzitos </h4>
 
 ```text
-~/zaneyos/
+~/duhzitos/
     ├── hosts/                      # Folder where host configs are saved
     │   ├── default                 # Default host template
     │   └── nixstation              # Zaney's host 
@@ -573,10 +573,10 @@ It will be announced on the Zaney [Discord](https://discord.gg/W7efsSDS) server.
     ├── CONTRIBUTING.md             # How you can help 
     ├── FAQ.md                      # Frequently Asked Questions
     ├── flake.lock                  # Saves version info on all installed packages
-    ├── flake.nix                   # flake that controls ZaneyOS config
-    ├── install-zaneyos.sh          # Install script for ZaneyOS
-    ├── LICENSE                     # MIT license ZaneyOS is using
-    └── README.md                   # Intro document for ZaneyOS
+    ├── flake.nix                   # flake that controls DuhzitOS config
+    ├── install-duhzitos.sh          # Install script for DuhzitOS
+    ├── LICENSE                     # MIT license DuhzitOS is using
+    └── README.md                   # Intro document for DuhzitOS
 
 ```
 
@@ -618,11 +618,11 @@ To check which layout is currently active, use the `hyprctl` command:
 
 <div style="margin-left: 20px;"> <br>
 
-The Yazi configuration file is located in `~/zaneyos/modules/home/yazi.nix`
+The Yazi configuration file is located in `~/duhzitos/modules/home/yazi.nix`
 
 Yazi is configured like VIM and VIM motions 
 
-The keymap is in the `~/zaneyos/modules/home/yazi/keymap.toml` file
+The keymap is in the `~/duhzitos/modules/home/yazi/keymap.toml` file
 
 </div>
 </details>
@@ -638,7 +638,7 @@ The keymap is in the `~/zaneyos/modules/home/yazi/keymap.toml` file
 
 <summary>My cursor in Kitty is "janky" and it jumps around. How do I fix that?</summary>
 
- - That feature is called "cursor_trail" in the `~/zaneyos/modules/home/kitty.nix` file. 
+ - That feature is called "cursor_trail" in the `~/duhzitos/modules/home/kitty.nix` file. 
 
   1. Edit that file and change the `cursor_trail 1` to `cursor_trail 0` or comment out that line.
   2. Use the command alias `fr` to create a new generation with the change. 
@@ -648,7 +648,7 @@ The keymap is in the `~/zaneyos/modules/home/yazi/keymap.toml` file
 <details>
  <summary>What are the Kitty keybindings and how can I change them?</summary>
 
-The kitty bindings are configured in `~/zaneyos/modules/home/kitty.nix`  
+The kitty bindings are configured in `~/duhzitos/modules/home/kitty.nix`  
   
 The defaults are:
 
@@ -718,8 +718,8 @@ The defaults are:
 
  <summary>How do I enable WezTerm?</summary>
 
- Edit the `/zaneyos/modules/home/wezterm.nix`  Change `enable = false` to `enable = true;`  
- Save the file and rebuild zaneyos with the `fr` command. 
+ Edit the `/duhzitos/modules/home/wezterm.nix`  Change `enable = false` to `enable = true;`  
+ Save the file and rebuild duhzitos with the `fr` command. 
 
 ```
 {pkgs, ...}: {
@@ -734,7 +734,7 @@ The defaults are:
 <details>
  <summary>What are the WezTerm keybindings and how can I change them?</summary>
 
-The kitty bindings are configured in `~/zaneyos/modules/home/wezterm.nix`  
+The kitty bindings are configured in `~/duhzitos/modules/home/wezterm.nix`  
   
 The defaults are:
 ```text
@@ -767,7 +767,7 @@ ALT + Up Arrow          Move to pane -- Down
 <details>
 <summary> How do I enable the ghostty terminal? </summary>
 
-1. Edit the `~/zaneyos/modules/home/ghostty.nix` file. 
+1. Edit the `~/duhzitos/modules/home/ghostty.nix` file. 
 2. Change `enable = true;`
 3. Run the command alias `fr` to create a new generation. 
 
@@ -777,7 +777,7 @@ ALT + Up Arrow          Move to pane -- Down
 
 <summary> How do I change the ghostty theme?   </summary>
 
-1. Edit the `~/zaneyos/modules/home/ghostty.nix` file.
+1. Edit the `~/duhzitos/modules/home/ghostty.nix` file.
 2. There are several example themes included but commented out.
 
 ```text
@@ -882,7 +882,7 @@ In essence, flakes help manage NixOS setups or Nix-based projects in a more port
    - Manage applications, environment variables, shell configurations, and more—all isolated to your user profile.
 
 ### Why Use Home Manager?
-Home Manager simplifies system management by offering consistency, reproducibility, and portability. Whether you’re customizing your development environment or sharing configurations between machines, it provides an efficient way to tailor your user experience.
+Home Manager simplifies system management by offering consistency, reproducibility, and portability. Whether you're customizing your development environment or sharing configurations between machines, it provides an efficient way to tailor your user experience.
 
 </details>
 

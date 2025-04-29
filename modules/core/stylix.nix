@@ -9,26 +9,31 @@ in {
   stylix = {
     enable = true;
     image = stylixImage;
-    # base16Scheme = {
-    #   base00 = "282936";
-    #   base01 = "3a3c4e";
-    #   base02 = "4d4f68";
-    #   base03 = "626483";
-    #   base04 = "62d6e8";
-    #   base05 = "e9e9f4";
-    #   base06 = "f1f2f8";
-    #   base07 = "f7f7fb";
-    #   base08 = "ea51b2";
-    #   base09 = "b45bcf";
-    #   base0A = "00f769";
-    #   base0B = "ebff87";
-    #   base0C = "a1efe4";
-    #   base0D = "62d6e8";
-    #   base0E = "b45bcf";
-    #   base0F = "00f769";
-    # };
+    
+    # DuhzitOS Theme Colors
+    base16Scheme = {
+      # Base colors from the DuhzitOS color scheme
+      base00 = "070707"; # Black
+      base01 = "550C18"; # Dark Burgundy
+      base02 = "550C18"; # Dark Burgundy (alt)
+      base03 = "550C18"; # Dark Burgundy (bright)
+      base04 = "FDCA40"; # Yellow
+      base05 = "66C3FF"; # Light Blue
+      base06 = "F64740"; # Red
+      base07 = "FFFFFF"; # White
+      base08 = "FDCA40"; # Yellow (accent)
+      base09 = "66C3FF"; # Light Blue (accent)
+      base0A = "F64740"; # Red (accent)
+      base0B = "FDCA40"; # Yellow (bright)
+      base0C = "66C3FF"; # Light Blue (bright)
+      base0D = "F64740"; # Red (bright)
+      base0E = "550C18"; # Dark Burgundy (accent)
+      base0F = "070707"; # Black (alt)
+    };
+
     polarity = "dark";
-    opacity.terminal = 1.0;
+    opacity.terminal = 0.95;
+
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";

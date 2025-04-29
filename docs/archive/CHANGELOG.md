@@ -1,8 +1,19 @@
 ## 🗒️ Changelog
 
-**ZaneyOS 2.0**
+**DuhzitOS 0.0.1**
 
-With this new update of ZaneyOS it is a big rewrite of how things are being
+Initial release of DuhzitOS, forked from ZaneyOS. This version includes:
+
+- Complete rebranding from ZaneyOS to DuhzitOS
+- Updated all documentation and references
+- Maintained all core functionality from the original
+- Set up new versioning scheme starting at 0.0.1
+- Updated installation script and configuration files
+- Maintained modular structure for easy customization
+
+**DuhzitOS 2.0**
+
+With this new update of DuhzitOS it is a big rewrite of how things are being
 done. This update fixes many issues that you guys were facing. As well as makes
 things a little easier to understand. You now have a lot being stored inside the
 specific host directory, making use of modules, condensing seperate files down,
@@ -17,7 +28,7 @@ supportive!
   implementation.
 - Rewrote the documentation for improved readability.
 
-**ZaneyOS 2.1**
+**DuhzitOS 2.1**
 
 Simple bug fixes.
 
@@ -27,7 +38,7 @@ Simple bug fixes.
   so be aware of that.
 - The flake got an update, so all the packages are fresh.
 
-**ZaneyOS 2.2**
+**DuhzitOS 2.2**
 
 This release has a big theming change as well as including the move back to
 rofi. It is a massive improvement in many ways.
@@ -55,7 +66,7 @@ rofi. It is a massive improvement in many ways.
 - Switching to Brave as the default to protect user privacy.
 - Replaced lsd with eza for a better looking experience.
 
-**ZaneyOS 2.3**
+**DuhzitOS 2.3**
 
 With this release there are improvements to Neovim and the entire file structure
 has been improved.
