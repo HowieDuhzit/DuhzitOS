@@ -24,9 +24,20 @@
     
     src = pkgs.sddm-sugar-dark;
     
-    buildInputs = [ pkgs.imagemagick ];
+    buildInputs = with pkgs; [ 
+      imagemagick
+      gdk-pixbuf
+      librsvg
+    ];
     
+    nativeBuildInputs = with pkgs; [
+      wrapGAppsHook
+    ];
+
     installPhase = ''
+      # Setup GDK_PIXBUF_MODULE_FILE for image loading
+      export GDK_PIXBUF_MODULE_FILE=$(echo ${pkgs.gdk-pixbuf.out}/lib/gdk-pixbuf-2.0/*/loaders.cache)
+      
       cp -r $src $out
       cp ${./../../Logo.png} $out/assets/logo.png
       
