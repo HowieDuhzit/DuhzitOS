@@ -110,8 +110,8 @@ else
 fi
 
 print_section "Cloning & Setting Up DuhzitOS Repository"
-git clone https://gitlab.com/zaney/zaneyos.git
-cd zaneyos || exit
+git clone -b DuhzitOS https://github.com/HowieDuhzit/DuhzitOS.git duhzitos
+cd duhzitos || exit
 mkdir -p hosts/"$hostName"
 cp hosts/default/*.nix hosts/"$hostName"
 
@@ -171,7 +171,7 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 
 print_section "Starting System Installation"
 print_info "This may take a while. Please be patient..."
-sudo nixos-rebuild switch --flake ~/zaneyos/#${profile}
+sudo nixos-rebuild switch --flake ~/duhzitos/#${profile}
 
 print_success "Installation completed!"
 echo "Please reboot your system to start using DuhzitOS."
