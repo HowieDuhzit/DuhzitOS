@@ -24,7 +24,7 @@
     # Display Manager Dependencies
     greetd.tuigreet
   ] ++ (lib.optionals (config.duhzitos.displayManager.type == "sddm") [
-    sddm
+    kdePackages.sddm
     sddm-sugar-dark
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
