@@ -91,9 +91,9 @@ in {
         configurationLimit = 10;
         consoleMode = "max";
       };
-      efi = {
-        canTouchEfiVariables = lib.mkIf (!config.vm.guest-services.enable) true;
-        efiSysMountPoint = lib.mkIf (!config.vm.guest-services.enable) "/boot";
+      efi = lib.mkIf (!config.vm.guest-services.enable) {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
       };
       # Fallback to GRUB for VM environments
       grub = lib.mkIf (config.vm.guest-services.enable) {
