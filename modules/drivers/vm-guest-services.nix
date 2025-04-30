@@ -22,7 +22,6 @@ in
     # Enable required services for graphics in VM
     hardware.opengl = {
       enable = true;
-      driSupport = true;
       driSupport32Bit = true;
     };
     
