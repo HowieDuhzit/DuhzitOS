@@ -91,7 +91,10 @@ in {
         configurationLimit = 10;
         consoleMode = "max";
       };
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
     };
     # Appimage Support
     binfmt.registrations.appimage = {

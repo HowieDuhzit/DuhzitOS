@@ -31,7 +31,7 @@ A modern, customizable NixOS configuration built for performance and aesthetics.
 2. Run the installation script:
 ```bash
 nix-shell -p git curl
-sh <(curl -L https://github.com/yourusername/duhzitos/raw/main/install-duhzitos.sh)
+sh <(curl -L https://github.com/HowieDuhzit/duhzitos/raw/main/install-duhzitos.sh)
 ```
 
 ## 🛠️ Customization
