@@ -181,6 +181,28 @@ in {
     extraConfig = "
       monitor=,preferred,auto,auto
       ${extraMonitorSettings}
+      
+      # VM-specific optimizations
+      ${pkgs.lib.optionalString config.vm.guest-services.enable ''
+      # Disable animations in VM for better performance
+      animations {
+        enabled = false
+      }
+      
+      # Lower quality blur in VM
+      decoration {
+        blur {
+          size = 2
+          passes = 1
+        }
+      }
+      
+      # Use direct scanout 
+      misc {
+        vfr = false
+        vrr = 0
+      }
+      ''}
     ";
   };
 }

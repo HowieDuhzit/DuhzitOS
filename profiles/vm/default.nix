@@ -19,7 +19,16 @@
     enable = lib.mkForce true;
     videoDrivers = ["modesetting"];
     libinput.enable = true;
-    displayManager.defaultSession = "none+hyprland";
+    displayManager.defaultSession = "hyprland";
     desktopManager.xterm.enable = false;
+  };
+  
+  # Disable Plymouth boot splash in VM
+  boot.plymouth.enable = false;
+  
+  # Configure proper VM networking
+  networking = {
+    firewall.enable = true;
+    networkmanager.enable = true;
   };
 }

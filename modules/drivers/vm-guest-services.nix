@@ -39,5 +39,29 @@ in
       WLR_RENDERER = "pixman";
       WLR_NO_HARDWARE_CURSORS = "1";
     };
+    
+    # Make sure display sessions are properly registered
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
+    
+    # Add proper support for Hyprland in VM
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    
+    # Ensure the Hyprland session is properly registered
+    environment.etc."xdg/wayland-sessions/hyprland.desktop".text = ''
+      [Desktop Entry]
+      Name=Hyprland
+      Comment=A dynamic tiling Wayland compositor
+      Exec=Hyprland
+      Type=Application
+    '';
   };
 }
