@@ -34,19 +34,31 @@
       wrapGAppsHook
     ];
 
+    # Create logo.png file at build time to avoid path issues
+    buildPhase = ''
+      # Create DuhzitOS logo programmatically to avoid file dependencies
+      mkdir -p $out/assets
+      convert -size 128x128 xc:transparent \
+        -fill "#FDCA40" -draw "circle 64,64 64,32" \
+        -fill "#66C3FF" -draw "circle 32,64 32,48" \
+        -fill "#F64740" -draw "circle 96,64 96,48" \
+        $out/assets/logo.png
+        
+      # Create a blurred version of the logo for the background
+      convert $out/assets/logo.png \
+        -blur 0x8 \
+        -modulate 50 \
+        $out/assets/background.png
+    '';
+
     installPhase = ''
       # Setup GDK_PIXBUF_MODULE_FILE for image loading
       export GDK_PIXBUF_MODULE_FILE=$(echo ${pkgs.gdk-pixbuf.out}/lib/gdk-pixbuf-2.0/*/loaders.cache)
       
-      cp -r $src $out
-      cp ${./../../img/Logo.png} $out/assets/logo.png
+      # Copy theme files from source
+      mkdir -p $out/
+      cp -r $src/* $out/
       
-      # Create a blurred version of the logo for the background
-      convert ${./../../img/Logo.png} \
-        -blur 0x8 \
-        -modulate 50 \
-        $out/assets/background.png
-        
       # Ensure correct permissions
       chmod -R +r $out
     '';
