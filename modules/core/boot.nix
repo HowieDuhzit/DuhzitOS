@@ -113,7 +113,7 @@ in {
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
     plymouth = {
-      enable = true;
+      enable = lib.mkIf (!config.vm.guest-services.enable) true;
       theme = "duhzitos";
       themePackages = [ duhzitosTheme ];
     };

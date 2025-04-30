@@ -23,9 +23,6 @@
     desktopManager.xterm.enable = false;
   };
   
-  # Disable Plymouth boot splash in VM
-  boot.plymouth.enable = false;
-  
   # Configure proper VM networking
   networking = {
     firewall.enable = true;
