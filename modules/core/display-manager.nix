@@ -64,7 +64,7 @@ in {
   config = lib.mkMerge [
     # Common configuration
     {
-      services.xserver.enable = lib.mkForce cfg.type == "sddm";
+      # Don't force-set xserver.enable here, let other modules control it
       services.xserver.displayManager.defaultSession = "hyprland";
     }
 

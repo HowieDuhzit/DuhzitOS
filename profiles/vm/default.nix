@@ -1,4 +1,4 @@
-{host, ...}: {
+{host, lib, ...}: {
   imports = [
     ../../hosts/${host}
     ../../modules/drivers
@@ -16,7 +16,7 @@
   
   # Configure X11 for better VM support
   services.xserver = {
-    enable = true;
+    enable = lib.mkForce true;
     videoDrivers = ["modesetting"];
     libinput.enable = true;
     displayManager.defaultSession = "none+hyprland";
