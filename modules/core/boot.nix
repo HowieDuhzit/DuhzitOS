@@ -86,14 +86,21 @@ in {
     kernel.sysctl = { "vm.max_map_count" = 2147483642; };
     loader = {
       systemd-boot = {
-        enable = true;
+        enable = lib.mkIf (!config.vm.guest-services.enable) true;
         # Add logo to systemd-boot menu
         configurationLimit = 10;
         consoleMode = "max";
       };
       efi = {
-        canTouchEfiVariables = true;
+        canTouchEfiVariables = lib.mkIf (!config.vm.guest-services.enable) true;
         efiSysMountPoint = "/boot";
+      };
+      # Fallback to GRUB for VM environments
+      grub = lib.mkIf (config.vm.guest-services.enable) {
+        enable = true;
+        device = "nodev";
+        efiSupport = false;
+        useOSProber = true;
       };
     };
     # Appimage Support
