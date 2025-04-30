@@ -109,6 +109,7 @@ in {
       services.xserver.displayManager.sddm = {
         enable = true;
         theme = "duhzitos";
+        wayland.enable = lib.mkIf config.vm.guest-services.enable false;
         settings = {
           Theme = {
             CursorTheme = config.stylix.cursor.name;
@@ -119,7 +120,19 @@ in {
             InputMethod = "";
             Numlock = "on";
           };
+          X11 = lib.mkIf config.vm.guest-services.enable {
+            # Use X11 in VM environments
+            ServerArguments = "-nolisten tcp -background none -ac";
+            EnableHiDPI = false;
+          };
         };
+      };
+
+      # Add VM-specific environment variables if in VM
+      environment.variables = lib.mkIf config.vm.guest-services.enable {
+        WLR_RENDERER = "pixman";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        LIBGL_ALWAYS_SOFTWARE = "1";
       };
 
       # Install SDDM theme and dependencies

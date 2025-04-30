@@ -138,15 +138,15 @@ in {
 
       cursor = {
         sync_gsettings_theme = true;
-        no_hardware_cursors = 2; # change to 1 if want to disable
+        no_hardware_cursors = 1; # Enabled for VM environments
         enable_hyprcursor = false;
         warp_on_change_workspace = 2;
         no_warps = true;
       };
 
       render = {
-        explicit_sync = 1; # Change to 1 to disable
-        explicit_sync_kms = 1;
+        explicit_sync = 0; # Disabled for VM environments
+        explicit_sync_kms = 0; # Disabled for VM environments
         direct_scanout = 0;
       };
 
@@ -169,7 +169,9 @@ in {
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
         "SDL_VIDEODRIVER, x11"
         "MOZ_ENABLE_WAYLAND, 1"
-        "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
+        "WLR_RENDERER,pixman" # Use software rendering in VM
+        "WLR_NO_HARDWARE_CURSORS,1" # Disable hardware cursors
+        "LIBGL_ALWAYS_SOFTWARE,1" # Force software GL rendering
         "GDK_SCALE,1"
         "QT_SCALE_FACTOR,1"
         "EDITOR,nvim"
