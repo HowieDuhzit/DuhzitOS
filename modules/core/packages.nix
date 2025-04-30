@@ -23,13 +23,12 @@
   environment.systemPackages = with pkgs; [
     # Display Manager Dependencies
     greetd.tuigreet
-    (lib.mkIf (config.duhzitos.displayManager.type == "sddm") [
-      sddm
-      sddm-sugar-dark
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
-    ])
-
+  ] ++ (lib.optionals (config.duhzitos.displayManager.type == "sddm") [
+    sddm
+    sddm-sugar-dark
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+  ]) ++ [
     amfora # Fancy Terminal Browser For Gemini Protocol
     appimage-run # Needed For AppImage Support
     brave # Brave Browser
