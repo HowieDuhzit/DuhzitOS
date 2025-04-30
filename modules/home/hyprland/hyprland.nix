@@ -10,6 +10,9 @@
     keyboardLayout
     stylixImage
     ;
+    
+  # Check if we're in a VM by presence of vm-specific environment variables
+  isVM = builtins.elem "WLR_RENDERER,pixman" (config.wayland.windowManager.hyprland.settings.env or []);
 in {
   home.packages = with pkgs; [
     swww
@@ -183,7 +186,7 @@ in {
       ${extraMonitorSettings}
       
       # VM-specific optimizations
-      ${pkgs.lib.optionalString config.vm.guest-services.enable ''
+      ${pkgs.lib.optionalString isVM ''
       # Disable animations in VM for better performance
       animations {
         enabled = false
