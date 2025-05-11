@@ -4,5 +4,10 @@
     discord
     nodejs
     obs-studio
+    code-cursor
+    flameshot
+    potrace
+    byobu
+    virtualbox
   ];
 }

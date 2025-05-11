@@ -1,7 +1,7 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "Tyler Kelley";
-  gitEmail = "tylerzanekelley@gmail.com";
+  gitUsername = "Howie Duhzit";
+  gitEmail = "howieduhzit@gmail.com";
 
   # Hyprland Settings
   extraMonitorSettings = "";
@@ -23,7 +23,7 @@
   enableNFS = true;
 
   # Enable Printing Support
-  printEnable = false;
+  printEnable = true;
 
   # Set Stylix Image
   stylixImage = ../../wallpapers/AnimeGirlNightSky.jpg;
